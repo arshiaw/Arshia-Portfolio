@@ -1,0 +1,103 @@
+<html>
+<head>
+    <title>Book a Ticket</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #5c5c5c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #131313;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 80%;
+            max-width: 800px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .input-group input, .input-group select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 200px;
+        }
+        .button {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="input-group">
+            <input type="text" placeholder="First Name">
+            <input type="text" placeholder="Last Name">
+            <select id="countery">
+                <option value="" disabled selected>Select Destination</option>
+                <option value="iran">iran</option>
+                <option value="canada">canada</option>
+                <option value="United State">united state</option>
+            </select>
+        </div>
+        <button class="button">Book a Ticket</button>
+        <div class="input-group">
+            <input type="text" placeholder="Email">
+            <input type="text" placeholder="Phone Number">
+            <select id="cities">
+                <option disabled value="" disabled selected>Select Class</option>
+
+            </select>
+        </div>
+    </div>
+
+    <script>
+        // create object form countery selection
+
+        let countery={
+            iran:["tehran","bnandarAbbas","shiraz"],
+            canada:["Alberta","Manitoba","NovaScotia"],
+            "United State": ["Andalusia","Anchorage","Clifton"]
+        }
+
+        let cities=document.getElementById("cities")
+        console.log(cities);
+        
+        let ctList=document.getElementById("countery")
+        ctList.addEventListener("change", ()=>{
+
+            cities.innerHTML = `<option value="">Select a city</option>`;
+            let now=ctList.value
+            
+            for(let i=0;i<countery[now].length;i++){
+                let elem=document.createElement("option")
+                elem.value=countery[now][i];
+                elem.innerHTML=countery[now][i];
+                cities.append(elem) 
+            }
+        })
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Box Design</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* styles.css */
+        body {
+            background-color: #121212;
+            /* Dark background */
+            font-family: 'Roboto', sans-serif;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .title {
+            font-size: 2rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .search-box {
+            display: flex;
+            border: 2px dashed #444444;
+            /* Light-colored dashed border */
+            border-radius: 8px;
+            background-color: #1F1F1F;
+            /* Black background */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            /* Soft shadow */
+        }
+
+        .search-input {
+            background-color: #1F1F1F;
+            color: white;
+            border: none;
+            outline: none;
+            padding: 10px;
+            flex: 1;
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+        }
+
+        .search-input::placeholder {
+            color: #AAAAAA;
+            /* Gray placeholder text */
+        }
+
+        .search-button {
+            background-color: #4CAF50;
+            /* Dark green background */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+            cursor: pointer;
+            transition: box-shadow 0.3s, transform 0.3s;
+            /* Subtle click effect */
+        }
+
+        .search-button:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .search-button:active {
+            transform: scale(0.98);
+        }
+
+        .serchResutl {
+            display: none;
+            flex-direction: column;
+            align-items: start;
+            border: 2px dashed #444444;
+            /* Light-colored dashed border */
+            border-radius: 8px;
+            background-color: #1F1F1F;
+            /* Black background */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            /* Soft shadow */
+            margin-top: 2rem;
+            min-height: 10rem;
+            padding: 1rem;
+        }
+
+        .weatherRes {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+        }
+
+        .weather__title {
+            align-self: center;
+        }
+
+        @keyframes colorChange {
+            0% {
+                color: red;
+            }
+
+            25% {
+                color: blue;
+            }
+
+            50% {
+                color: green;
+            }
+
+            75% {
+                color: orange;
+            }
+
+            100% {
+                color: red;
+            }
+        }
+
+        .weather__title {
+            animation: colorChange 10s infinite;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="title">SEARCH BOX</h1>
+        <div class="search-box">
+            <input type="text" class="search-input" placeholder="Enter city or location">
+            <button class="search-button">Search</button>
+        </div>
+        <div class="serchResutl">
+            <h1 class="weather__title">countery information</h1>
+            <h2 class="weather__titr">
+                </h1>
+                <p class="weather__paragraph"></p>
+                <div class="weatherRes">
+                    <p class="weatherRes__type"></p>
+                    <p class="weatherRes__humidity">humidity:</p>
+                    <p class="weatherRes__speed">wind speed:</p>
+                </div>
+        </div>
+    </div>
+
+    <script>
+        // script.js
+        // function direction() {
+        // document.body.classList.toggle('rtl');
+        // }
+        // 
+        // document.addEventListener('DOMContentLoaded', function() {
+        // const toggleButton = document.getElementById('dir');
+        // toggleButton.addEventListener('click', direction);
+        // });
+
+
+
+        // body bg transform
+
+        let main = document.body
+        let colors = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"];
+
+        setInterval(() => {
+            let hex = "#"
+            for (let i = 0; i < 8; i++) {
+                hex += colors[Math.floor(Math.random() * colors.length)]
+            }
+            main.style.background = hex
+        }, 2000)
+
+
+        // 
+        // cityes informations
+        let cityes =
+            [
+                { name: "tehran", airTemp: "8°C", weather: "coludy", humidity: "8%", windSpeed: "10 km/h" },
+                { name: "shiraz", airTemp: "12°C", weather: "windy", humidity: "10%", windSpeed: "7 km/h" },
+                { name: "bandar abbas", airTemp: "25°C", weather: "sunny", humidity: "14%", windSpeed: "5 km/h" },
+                { name: "mashad", airTemp: "2°C", weather: "rainy", humidity: "11%", windSpeed: "15 km/h" },
+            ]
+        // 
+
+        // html values
+        let search = document.querySelector(".search-button");
+        let inp = document.querySelector(".search-input")
+        let weatherInfo = document.querySelector(".serchResutl")
+
+        // function for update weather values if input value is true !
+        let updateWeatherInfo = (result) => {
+            document.querySelector(".weather__titr").textContent = `Weather in : ${result.name}`
+            document.querySelector(".weather__paragraph").textContent = result.airTemp
+            document.querySelector(".weatherRes__type").textContent = result.weather
+            document.querySelector(".weatherRes__humidity").textContent = result.humidity
+            document.querySelector(".weatherRes__speed").textContent = result.windSpeed
+            weatherInfo.style.display = "flex"
+        }
+        // 
+
+        // set click event to input
+        search.addEventListener("click", () => {
+
+            let searchValue = inp.value.trim().toLowerCase()
+            let result = cityes.find(city => city.name.toLowerCase() === searchValue);
+
+            // validation input value
+            if (result) {
+                updateWeatherInfo(result)
+            } else {
+                weatherInfo.style.display = "none";
+                alert("city not found ! please enter a valid city name.")
+            }
+            // 
+        })
+        // 
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,162 @@
+body {
+    /* background-color: rgba(230, 14, 250, 0.61); */
+    background-color: gray;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Sora", serif;
+}
+
+.widgetBox {}
+
+.holder {}
+
+.widegetsBox {
+    background: #ffff;
+    border-radius: 0.75rem;
+    width: 6rem;
+    margin-bottom: 1rem;
+}
+
+.widgets__container {
+    padding: 0.5rem 0.25rem;
+}
+
+.widgets__hoder {
+    display: flex
+    ;
+        justify-content: space-around;
+}
+
+.widgets__holder__items {
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    transition: all 0.25s ease-in-out;
+    position: relative;
+}
+
+.widhetItems {
+    background: #ffffff;
+    /* width: 25rem; */
+    /* height: 20rem; */
+    width: 0;
+    height: 0;
+    border-radius: 0.5rem;
+    /* visibility: hidden
+    ; */
+    
+
+}
+
+.timerBox {
+    padding: 2rem 0;
+    height: 100%;
+    opacity: 0;
+    transition: all 0.25s ease-in-out;
+}
+
+.container {
+    padding: 0 1.5rem;
+    height: inherit;
+}
+
+.heading {
+    padding: 1rem 0;
+    display: flex
+;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.timerTitle {}
+
+
+.btn{
+    text-decoration: none;
+    color: #000;
+    background: lightgray;
+    padding: 0.15rem 0.20rem;
+    border-radius: 0.25rem;
+    text-align: center;
+    cursor: pointer;
+}
+.restartBtn {
+    color: rgb(241 111 111);
+    background: rgb(241 111 111 / 25%);
+}
+
+.counterBox {
+    display: flex
+    ;
+        align-items: center;
+        justify-content: center;
+        height: 10rem;
+}
+
+.timerLable {
+    font-size: 1.5rem;
+}
+
+footer{
+
+    border-top: 1px solid #cfcfcf;
+    padding: 1rem 0;
+}
+
+.footer__container {
+    padding: 0.25rem 0;
+    display: flex
+;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.btnBox {}
+.btnBox button {
+    padding: 0.25rem 0.5rem;
+    border: none;
+}
+
+#starting {}
+
+#saving {}
+
+.timeAdder {
+    color: #000;
+    background: lightgray;
+
+}
+
+/* effecting */
+.active{
+    
+   color:  rgb(216, 8, 235);
+   background-color:  rgba(216, 8, 235, 0.219);
+}
+
+.widgets__holder__items:nth-child(1):focus,
+.widgets__holder__items:nth-child(2):focus,
+.widgets__holder__items:nth-child(3):focus {
+    background-color: lightgray;
+}
+
+.widgets__holder__items:nth-child(2)::before, .widgets__holder__items:nth-child(3)::before{
+content: "comming soon...";
+visibility: hidden;
+position: absolute;
+background-color: #3a3a3a;
+color: #ffffff;
+padding: 0.5rem;
+border-radius: 0.5rem;
+z-index: 1;
+top: -4rem;
+transition: all 0.25s ease-in-out;
+opacity: 0;
+}
+
+.widgets__holder__items:nth-child(2):focus:before,
+.widgets__holder__items:nth-child(3):focus::before {
+    visibility: visible;
+    opacity: 1;
+}

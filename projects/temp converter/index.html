@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #fff;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .converter-box {
+            background-color: #1E1E1E;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 300px;
+            height: 400px;
+            border: 2px dashed #FFC107;
+            animation: dash 2s linear infinite;
+        }
+        @keyframes dash {
+            0% {
+                border-style: dashed;
+            }
+            50% {
+                border-style: solid;
+            }
+            100% {
+                border-style: dashed;
+            }
+        }
+        input {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 30%;
+        }
+        .convert-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .reset-btn {
+            background-color: #f44336;
+            color: white;
+        }
+        .change-btn {
+            background-color: #2196F3;
+            color: white;
+        }
+        button:hover {
+            opacity: 0.8;
+        }
+        #output{
+            margin-top: 2rem;
+        }
+
+        .sub{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="titleElem"></h1>
+    <div class="converter-box">
+        <input class="input" type="number" id="inputTemp" placeholder="Enter temperature">
+        <div class="buttons">
+            <button class="convert-btn" >Convert C To F</button>
+            <button class="reset-btn" >Reset</button>
+            <button class="change-btn" >Change C To F</button>
+        </div>
+        <p id="output"></div>
+          
+    </div>
+
+    <script>
+        // put body element in $ vaiable for simpling 
+        let $=document;
+        // 
+        
+        // needed variables in pr
+        let inp=$.querySelector(".input")
+        let convert =$.querySelector(".convert-btn")
+        let reset=$.querySelector(".reset-btn")
+        let change=$.querySelector(".change-btn")
+        let title=$.querySelector("#titleElem")
+        title.textContent="Temperature Converter C to F"
+        let res=$.querySelector("#output")
+        let flag=true;
+        // 
+
+        // set event for convert and add validation in anonymouse funcitons
+        convert.addEventListener("click",()=>{
+            if(inp.value==""){
+                alert("pelase fill input ! ")
+                
+            }else{
+                res.textContent=flag?"C To F :".concat(inp.value*(9/5)+32):"F To C :".concat((inp.value-32)*(5/9))
+            }
+            
+        })
+        // 
+
+        // set event for reset and add validation in anonymouse funcitons
+        reset.addEventListener("click",()=>{
+            if(inp.value!=""){
+                inp.value=""
+                res.textContent=""
+            }else{
+                alert("input is empty")
+            }
+        })
+        // 
+        
+        // set event for change and add validation in anonymouse funcitons
+        change.addEventListener("click",()=>{
+            // set default status for converting , default(flag=true) = C To F 
+            
+            title.textContent=flag?"Temperature Converter F to C":"Temperature Converter C to F";
+            convert.textContent=flag?"Converter F to C":"Converter C to F";
+            change.textContent=flag?"Converter F to C":"Converter C to F";
+            flag=!flag;
+            
+            
+        })
+        
+
+    </script>
+</body>
+</html>

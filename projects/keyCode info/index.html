@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KeyCode Info</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .key-info {
+            display: inline-block;
+            padding: 20px;
+            border: 2px dashed #333;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .key-info div {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+
+        .description {
+            margin-top: 20px;
+            font-size: 1em;
+            color: #555;
+        }
+
+        .event-dump {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #fafafa;
+            text-align: left;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Press any key to get the KeyCode info</h1>
+        <div class="key-info">
+            <div id="key">Key: </div>
+            <div id="location">Location: </div>
+            <div id="code">Code: </div>
+            <div id="which">Which: </div>
+            <div class="description">Description: Press any key on your keyboard to see the key event information
+                displayed here.</div>
+            <div class="event-dump" id="eventDump">Event Dump: </div>
+        </div>
+    </div>
+
+    <script>
+
+
+
+
+        document.body.addEventListener("keydown", event => {
+            
+            
+            
+          let dumpBox={
+            isTrusted:event.isTrusted,
+            altKey:event.altKey,
+            bubbles:event.bubbles,
+            cancelBubble:event.cancelBubble,
+            code:event.code,
+
+
+          }
+            document.getElementById("key").textContent = "key :" + event.key
+            document.getElementById("location").textContent = "location : " + event.location
+            document.getElementById("code").textContent = "code : " + event.keyCode
+            document.getElementById("which").textContent = "which : " + event.which
+            document.getElementById("eventDump").textContent=JSON.stringify(dumpBox,null,2)
+          
+          
+
+
+        })
+    </script>
+</body>
+
+</html>

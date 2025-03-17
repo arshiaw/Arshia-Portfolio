@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodMart</title>
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/app.css">
+    <link rel="stylesheet" href="styles/media-queries.css">
+    <link rel="stylesheet" href="styles/customs.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+        integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../node_modules/swiper/swiper-bundle.min.css">
+
+</head>
+
+<body>
+    <!-- user basket container -->
+    <div class="swimers userBasket__box hidden ">
+        <!-- user basket exit box icon -->
+        <div class="closeUp-Box flex items-center justify-center w-full p-4">
+            <button class="closUp-basket text-[1.2rem]"><i class="fa fa-remove"></i></button>
+        </div>
+        <!-- user basket items container -->
+        <div class="user__cardBox px-4">
+            <!-- user baskert title -->
+            <h4 class="user__title-box flex items-center justify-between">
+                <span class="user__title  text-market-orange-default">سبد خرید شما</span>
+                <span
+                    class="user__basket-number rounded-full bg-market-orange-default px-3 py-1 text-center text-white">2</span>
+            </h4>
+            <!-- user basket list ul < li  -->
+            <ul class="user__basket-listBox flex flex-col my-4 w-full">
+                <li class="w-full flex justify-between px-2 py-1 border rounded-sm">
+                    <div class="flex flex-col ">
+                        <h6>کیک فانتزی</h6>
+                        <small>کیک فانتزیه خونگی تازه و خوشمزه</small>
+                    </div>
+                    <!-- user basket price and couter box -->
+                    <div class="flex items-center flex-col ">
+                        <span>20،000</span>
+                        <!-- user basket counter div -->
+                        <div class="w-full flex items-end justify-between">
+                            <button class="bg-gray-400 rounded-tr-md rounded-br-md px-1">+</button>
+                            <input type="number" min="0" max="100" step="1" value="1"
+                                class="w-6 text-center outline-none bg-light-gray-default">
+                            <button class="bg-gray-400 rounded-tl-md rounded-bl-md px-1">-</button>
+                        </div>
+                    </div>
+
+
+                </li>
+                <li class="w-full flex justify-between px-2 py-1 border rounded-sm">
+                    <div class="flex flex-col ">
+                        <h6>کیک فانتزی</h6>
+                        <small>کیک فانتزیه خونگی تازه و خوشمزه</small>
+                    </div>
+
+                    <div class="flex items-center flex-col ">
+                        <span>20،000</span>
+                        <div class="w-full flex items-end justify-between">
+                            <button class="bg-gray-400 rounded-tr-md rounded-br-md px-1">+</button>
+                            <input type="number" min="0" max="100" step="1" value="1"
+                                class="w-6 text-center outline-none bg-light-gray-default">
+                            <button class="bg-gray-400 rounded-tl-md rounded-bl-md px-1">-</button>
+
+
+                        </div>
+                    </div>
+
+
+                </li>
+                <!-- sum of the price box -->
+                <li class="w-full flex justify-between border px-2 py-1 rounded-sm">
+                    <span>مجموع خرید</span>
+                    <strong>000'500</strong>
+                </li>
+            </ul>
+            <button id="user__cardBox-btn" class="w-full p-2 text-white bg-market-orange-default rounded-md">ادامه مراحل
+                پرداخت</button>
+        </div>
+    </div>
+    <!-- meta search codes -->
+    <div class="swimers metaSearchBox flex flex-col items-center hidden">
+        <div class="closeUp-Box flex items-center justify-center w-full p-4">
+            <button class="closeUp-btn text-[1.2rem]"><i class="fa fa-remove"></i></button>
+        </div>
+        <div class="metasearch__content flex flex-col w-full p-2">
+            <h4 id="metasearch__heading" class="mb-4 text-[#ffc43f]">
+                <span id="metasearch__txt">جستجو</span>
+            </h4>
+            <form action="#" class="flex items-center justify-center text-sm w-full">
+                <input type="text" name="search" id="metasearch__inp"
+                    class="bg-light-gray-default rounded-tr-md rounded-br-md p-2 outline-none w-full">
+                <button id="metasearch__btn"
+                    class="bg-gray-900 text-white p-2 rounded-tl-md rounded-bl-md">جستجو</button>
+            </form>
+        </div>
+
+    </div>
+    <!-- headers section -->
+    <header id="header">
+        <div class="w-full px-4">
+            <div class="flex -mx-2  py-4 border-b-2 " id="headerContent">
+                <!-- logo section -->
+                <div id="header-img-box" class=" sm:w-4/12 px-2 lg:w-3/12 text-center flex-auto ">
+                    <img src="images/logo.png" alt="" class="" id="header-img-box__img">
+                </div>
+                <!-- search section -->
+                <div id="header__search-content" class=" md:block lg:w-5/12 px-2 ">
+                    <div class="flex items-center -mx-2 bg-light-gray-default p-2 rounded-2xl">
+                        <!-- search > selection -->
+                        <div class=" w-4/12 px-2 " id="header__search-selectBox">
+                            <select name="categories" id="headerSelect" class="md:w-full py-2 px-2 bg-transparent">
+                                <option id="headerSelect__option" value="All Categories">همه محصولات</option>
+                                <option id="headerSelect__option" value="Groceries">مواد غذایی</option>
+                                <option id="headerSelect__option" value="Drinks">نوشیدنی</option>
+                                <option id="headerSelect__option" value="Chocolates">شکلات</option>
+                            </select>
+                        </div>
+                        <!-- serach > input -->
+                        <div id="header__search-inpBox" class="px-2 md:w-7/12 ">
+                            <form action="get" id="headerForm" class="text-center">
+                                <input type="text" name="" id="headerForm__inp"
+                                    class="md:w-full py-2 px-2 bg-transparent" placeholder="جستوجوی بیش از 000'20 کالا">
+                            </form>
+                        </div>
+                        <!-- search > searc icon -->
+                        <div id="header__searchIcon-box" class=" px-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                class="cursor-pointer">
+                                <path fill="currentColor"
+                                    d="M21.71 20.29L18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 7-7a7 7 0 0 1-7 7Z">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <!-- card and support section -->
+                <div id="header__cardBox" class="sm:w-8/12 lg:w-4/12 px-2 flex items-center justify-end ">
+                    <div id="header__card-content" class="flex  gap-14 items-center ">
+                        <div id="header__suportBox">
+                            <span>نیاز به پشتیبانی داری ؟</span>
+                            <h5><bdo dir="ltr">+98 123456789</bdo></h5>
+                        </div>
+                        <div id="header__iconBox">
+                            <ul id="header__icon-content" class="flex">
+                                <li>
+                                    <!-- icon one -->
+                                    <a href="#" id="header__icon-user" class="header__icon  inline-block p-2 mx-1">
+                                        <?xml version="1.0" encoding="utf-8"?>
+                                        <!-- License: MIT. Made by uiwjs: https://github.com/uiwjs/icons -->
+                                        <svg width="24" height="24" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.99296258,10.5729355 C12.478244,10.5729355 14.4929626,8.55821687 14.4929626,6.0729355 C14.4929626,3.58765413 12.478244,1.5729355 9.99296258,1.5729355 C7.5076812,1.5729355 5.49296258,3.58765413 5.49296258,6.0729355 C5.49296258,8.55821687 7.5076812,10.5729355 9.99296258,10.5729355 Z M10,0 C13.3137085,0 16,2.6862915 16,6 C16,8.20431134 14.8113051,10.1309881 13.0399615,11.173984 C16.7275333,12.2833441 19.4976819,15.3924771 19.9947005,19.2523727 C20.0418583,19.6186047 19.7690435,19.9519836 19.3853517,19.9969955 C19.0016598,20.0420074 18.6523872,19.7816071 18.6052294,19.4153751 C18.0656064,15.2246108 14.4363723,12.0699838 10.034634,12.0699838 C5.6099956,12.0699838 1.93381693,15.231487 1.39476476,19.4154211 C1.34758036,19.7816499 0.998288773,20.0420271 0.614600177,19.9969899 C0.230911582,19.9519526 -0.0418789616,19.6185555 0.00530544566,19.2523267 C0.500630192,15.4077896 3.28612316,12.3043229 6.97954305,11.1838052 C5.19718955,10.1447285 4,8.21217353 4,6 C4,2.6862915 6.6862915,0 10,0 Z" />
+                                        </svg>
+                                    </a>
+                                </li>
+                                <!-- icon two -->
+                                <li>
+                                    <a href="#" id="header__icon-favorite" class="header__icon inline-block p-2 mx-1">
+                                        <svg width="24" height="24" viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M20.16,5A6.29,6.29,0,0,0,12,4.36a6.27,6.27,0,0,0-8.16,9.48l6.21,6.22a2.78,2.78,0,0,0,3.9,0l6.21-6.22A6.27,6.27,0,0,0,20.16,5Zm-1.41,7.46-6.21,6.21a.76.76,0,0,1-1.08,0L5.25,12.43a4.29,4.29,0,0,1,0-6,4.27,4.27,0,0,1,6,0,1,1,0,0,0,1.42,0,4.27,4.27,0,0,1,6,0A4.29,4.29,0,0,1,18.75,12.43Z" />
+                                        </svg>
+                                    </a>
+                                </li>
+                                <!-- icon three -->
+                                <li class="hidden">
+                                    <a href="#" id="header__icon-basket"
+                                        class="header__icon basket inline-block p-2 mx-1">
+                                        <svg width="24" height="24" viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M2.31063 11.2425C2.15285 10.6114 2.63021 10 3.28078 10H20.7192C21.3698 10 21.8472 10.6114 21.6894 11.2425L19.8787 18.4851C19.6561 19.3754 18.8562 20 17.9384 20H6.06155C5.14382 20 4.34385 19.3754 4.12127 18.4851L2.31063 11.2425Z"
+                                                stroke="#000000" stroke-width="2" stroke-linejoin="round" />
+                                            <path d="M9 14V16" stroke="#000000" stroke-width="2"
+                                                stroke-linecap="round" />
+                                            <path d="M15 14V16" stroke="#000000" stroke-width="2"
+                                                stroke-linecap="round" />
+                                            <path d="M6 10L10 4" stroke="#000000" stroke-width="2"
+                                                stroke-linecap="round" />
+                                            <path d="M18 10L14 4" stroke="#000000" stroke-width="2"
+                                                stroke-linecap="round" />
+                                        </svg></a>
+                                </li>
+                                <!-- icon four -->
+                                <li class="hidden">
+                                    <a href="#" id="header__icon-search" class="header__icon inline-block p-2 mx-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" class="cursor-pointer">
+                                            <path
+                                                d="M21.71 20.29L18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 7-7a7 7 0 0 1-7 7Z">
+                                            </path>
+                                        </svg></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- header user basket section -->
+                        <div id="header__basketBox" class="basket">
+                            <button id="header__basket" class="flex flex-col items-center gap-2 px-2">
+                                <span id="header__basket-title">سبد خرید شما</span>
+                                <span id="header__basket-price"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                </p>
+            </div>
+        </div>
+        <div class="w-full px-4">
+            <div class="py-4 flex">
+                <div class="px-2 flex justify-between items-center">
+                    <nav class="py-2 min-h-14 flex  ">
+                        <button
+                            class="flex items-center justify-center py-1 px-3 rounded-md border-2  border-gray-400  hidden"
+                            id="barsBtn">
+                            <span class="fa fa-bars text-2xl"></span>
+                        </button>
+                        <div>
+                            <!-- menu and dropdown menu -->
+                            <div id="header__btn-endShow">
+                                <div id="header__btn-body"
+                                    class=" flex-1 items-center grid grid-cols-[1fr_1fr] h-full ">
+                                    <!-- exit menu btn -->
+                                    <div id="closeUp-Box" class="closeUp-Box hidden">
+                                        <button class=" cosueUp-btn text-2xl text-gray-400" id="closeUp-btn"><i
+                                                class="fa fa-remove"></i></button>
+                                    </div>
+                                    <!--  -->
+
+                                    <select name="" id="categoriesBox" class="ml-16 ">
+                                        <option value="#">خرید بر اساس...</option>
+                                        <option value="#">مواد غذایی</option>
+                                        <option value="#">سبزیجات</option>
+                                        <option value="#">نوشیدنی ها</option>
+                                        <option value="#">شکلات و تنقلات</option>
+                                        <option value="#">کیک و شیرینی</option>
+                                    </select>
+                                    <ul id="dropdown-menu" class="flex gap-5">
+                                        <li><a href="#" class="p-2">تخفیف ها</a></li>
+                                        <li><a href="#" class="p-2">برند ها</a></li>
+                                        <li><a href="#" class="p-2">درباره ما</a></li>
+                                        <li><a href="#" class="p-2">پشتیبانی</a></li>
+                                        <li id="dropdown__content-container" class="relative"><a href="#">صفحات</a>
+                                            <ul class="absolute left-0 border py-2 mt-0.5 hidden" id="pagesMenu">
+                                                <li><a href="#" class="block py-1 px-4 w-full ">اکانت من</a></li>
+                                                <li><a href="#" class="block py-1 px-4 w-full ">محصولات</a></li>
+                                                <li><a href="#" class="block py-1 px-4 w-full ">سبد خرید</a></li>
+                                                <li><a href="#" class="block py-1 px-4 w-full ">درباره ما</a></li>
+                                                <li><a href="#" class="block py-1 px-4 w-full ">تماس با ما</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fade" id="header__menu-fade"></div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- sec one coding -->
+    <section id="banner-sec" class="py-4">
+        <div class="w-full px-4">
+            <div>
+                <div class="px-3">
+                    <div id="banner__box" class="grid grid-cols-12 grid-rows-2 gap-8  ">
+                        <!-- block 1 -->
+                        <div class="banner__ad block-1">
+                            <div class="swiper main-swiper swiper-initialized swiper-horizontal swiper-backface-hidden">
+                                <div class="swiper-wrapper">
+                                    <!-- slide one -->
+                                    <div class="swiper-slide " style="width: 879px;">
+                                        <div class="p-12 flex">
+                                            <div class="content__wrapper">
+                                                <div>
+                                                    <h4 class="text-market-orange-default text-4xl my-4">100% طبیعی</h4>
+                                                </div>
+                                                <h3 class="text-5xl font-bold leading-normal mb-2">آبمیوه های طبیعی و
+                                                    تازه مخصوص تابستون</h3>
+                                                <p class="leading-normal mb-4">آبمیوه های تازه و طبیعی برند اسموت تیک ،
+                                                    یکی از بهترین آبمیوه هایی
+                                                    هست که میتونید تجربه کنید ، کاملا طبیعی و بدون دخالت دست</p>
+                                                <a href="#"
+                                                    class="inline-block border-2 border-black rounded-md px-4 py-5 mt-4 "
+                                                    id="block1__shoppingBtn">ثبت سفارش</a>
+
+                                            </div>
+                                            <div class="img__wrapper">
+                                                <img src="images/product-thumb-1.png" alt="product image"
+                                                    class="w-full h-auto">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- slide two -->
+                                    <div class="swiper-slide " style="width: 879px;">
+                                        <div class="p-12 flex">
+                                            <div class="content__wrapper">
+                                                <div>
+                                                    <h4 class="text-market-orange-default text-4xl my-4">100% طبیعی</h4>
+                                                </div>
+                                                <h3 class="text-5xl font-bold leading-normal mb-2">آبمیوه های طبیعی و
+                                                    تازه مخصوص تابستون</h3>
+                                                <p class="leading-normal mb-4">آبمیوه های تازه و طبیعی برند اسموت تیک ،
+                                                    یکی از بهترین آبمیوه هایی
+                                                    هست که میتونید تجربه کنید ، کاملا طبیعی و بدون دخالت دست</p>
+                                                <a href="#"
+                                                    class="inline-block border-2 border-black rounded-md px-4 py-5 mt-4 "
+                                                    id="block1__shoppingBtn">همه محصولات</a>
+
+                                            </div>
+                                            <div class="img__wrapper">
+                                                <img src="images/product-thumb-1.png" alt="product image"
+                                                    class="w-full h-auto">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- slide three -->
+                                    <div class="swiper-slide " style="width: 879px;">
+                                        <div class="p-12 flex">
+                                            <div class="content__wrapper">
+                                                <div>
+                                                    <h4 class="text-market-orange-default text-4xl my-4">100% طبیعی</h4>
+                                                </div>
+                                                <h3 class="text-5xl font-bold leading-normal mb-2">آبمیوه های طبیعی و
+                                                    تازه مخصوص تابستون</h3>
+                                                <p class="leading-normal mb-4">آبمیوه های تازه و طبیعی برند اسموت تیک ،
+                                                    یکی از بهترین آبمیوه هایی
+                                                    هست که میتونید تجربه کنید ، کاملا طبیعی و بدون دخالت دست</p>
+                                                <a href="#"
+                                                    class="inline-block border-2 border-black rounded-md px-4 py-5 mt-4 "
+                                                    id="block1__shoppingBtn">همه محصولات</a>
+
+                                            </div>
+                                            <div class="img__wrapper">
+                                                <img src="images/product-thumb-2.png" alt="product image"
+                                                    class="w-full h-auto">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-horizontal">
+                                    <span class="swiper-pagination-bullet"></span>
+                                    <span class="swiper-pagination-bullet"></span>
+                                    <span class="swiper-pagination-bullet"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- block 2 -->
+                        <div class="banner__ad block-2" style="background:url('images/thumb-avocado.png') no-repeat;background-position: left bottom; ">
+                            <div class="flex p-12">
+                                <div>
+                                    <p class="offText">20% off</p>
+                                    <h3 class="banner-info">تخفیف باورنکردنیه میوه و سبزیجات !</h3>
+                                    <a href="#" class="banner-link">نمایش همه محصولات
+                                        <svg width="20" height="20" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M17.707 9.293l-5-5a.999.999 0 10-1.414 1.414L14.586 9H3a1 1 0 100 2h11.586l-3.293 3.293a.999.999 0 101.414 1.414l5-5a.999.999 0 000-1.414z"
+                                                fill="#5C5F62" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- block 3 -->
+                        <div class="banner__ad block-3" style="background:url('images/ad-image-2.png') no-repeat;background-position: left bottom;">
+                            <div class="flex p-12">
+                                <div>
+                                    <p class="offText ">15% off</p>
+                                    <h3 class="banner-info">تخفیف ویژه کیک و شیرینی</h3>
+                                    <a href="#" class="banner-link">نمایش همه محصولات
+                                        <svg width="20" height="20" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M17.707 9.293l-5-5a.999.999 0 10-1.414 1.414L14.586 9H3a1 1 0 100 2h11.586l-3.293 3.293a.999.999 0 101.414 1.414l5-5a.999.999 0 000-1.414z"
+                                                fill="#5C5F62" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- fade section for meta elements -->
+    <div class="fade" id="metaFade"></div>
+    <!-- پایان بدنه -->
+    <script src="../node_modules/swiper/swiper-bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize Swiper
+            var swiper = new Swiper('.main-swiper', {
+                direction: 'horizontal',
+                loop: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                autoplay: {
+                    delay: 5000,
+                },
+            });
+        });
+    </script>
+
+
+    <script>
+        let menuBtn = document.querySelector("#dropdown__content-container")
+        let hiddenMenu = document.querySelector("#pagesMenu")
+        let bars = document.querySelector("#barsBtn")
+        let menuContent = document.querySelector("#header__btn-endShow")
+        let btnBox = document.querySelector("#closeUp-Box");
+        let btn = document.querySelector("#closeUp-btn")
+        let menufade = document.querySelector("#header__menu-fade")
+        let isClick = false;
+        menuBtn.addEventListener("click", () => {
+            if (!isClick) {
+
+                hiddenMenu.style.display = "block"
+                isClick = true
+            } else {
+                hiddenMenu.style.display = "none"
+                isClick = false
+            }
+        })
+        // 
+
+        bars.addEventListener("click", () => {
+            menuContent.style.display = "block"
+            menuContent.style.right = "0"
+            menufade.style.display = "block"
+        })
+        btn.addEventListener("click", () => {
+
+            menuContent.style.right = "-50rem"
+            menufade.style.display = "none"
+
+        })
+
+        // metasearch :
+        let searchIcon = document.querySelector("#header__icon-search")
+        let metasearch = document.querySelector(".metaSearchBox")
+        let metafade = document.querySelector("#metaFade")
+        let metaClose = document.querySelector(".closeUp-btn")
+        let isSearch = false;
+        searchIcon.addEventListener("click", () => {
+            metasearch.style.display = "block"
+            metafade.style.display = "block"
+            isSearch = !isSearch
+
+        })
+
+        metaClose.addEventListener("click", () => {
+            if (!isSearch) {
+                metasearch.style.display = "block"
+                metafade.style.display = "block"
+                isSearch = !isSearch
+            } else {
+                metasearch.style.display = "none"
+                metafade.style.display = "none"
+                isSearch = !isSearch
+            }
+        })
+
+        // user baskert box
+
+        let basket = document.querySelector(".userBasket__box");
+        let basketBox = document.querySelector("#header__basketBox")
+        let basketIcon = document.querySelector("#header__icon-basket")
+        let closUp_basket = document.querySelector(".closUp-basket")
+        let isOpen = false;
+        let sumOfPrice = document.querySelector("#header__basket-price")
+        // sum of the price
+        sumOfPrice.textContent = basket.lastElementChild.firstElementChild.nextElementSibling.lastElementChild.lastElementChild.innerHTML;
+        // 
+        basketBox.addEventListener("click", () => {
+            basket.style.display = "block"
+            metafade.style.display = "block"
+            isOpen = !isOpen;
+        })
+        basketIcon.addEventListener("click", () => {
+            basket.style.display = "block"
+            metafade.style.display = "block"
+            isOpen = !isOpen;
+        })
+
+        closUp_basket.addEventListener("click", () => {
+            if (isOpen) {
+                basket.style.display = "none"
+                metafade.style.display = "none"
+
+                isOpen = !isOpen;
+            } else {
+                basket.style.display = "block"
+                metafade.style.display = "block"
+                isOpen = !isOpen;
+
+            }
+        })
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

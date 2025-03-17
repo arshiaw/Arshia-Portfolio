@@ -1,0 +1,154 @@
+        /* استایل‌های شما */
+        body {
+            direction: rtl;
+            margin: 0;
+            font-family: lalezar;
+            padding-top: 60px; /* برای جلوگیری از پنهان کردن محتوا توسط منوی فیکس شده */
+            background-color: #201f1f;
+            color: #fff; /* رنگ متن */
+            overflow-x: hidden; /* جلوگیری از اسکرول افقی */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #ffff;
+            padding: 10px 0;
+            z-index: 1000; /* برای اطمینان از قرارگیری منو بالاتر از سایر عناصر */
+            text-align: center;
+            border-radius: 0 0 2rem 2rem;
+        }
+
+        .menu__box {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .menu__box-item {
+            margin: 0 10px;
+        }
+
+        .menu__box-link {
+            text-decoration: none;
+            color: #000000;
+            font-size: 18px;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+            font-family: lalezar;
+        }
+
+        .menu__box-link:hover {
+            color: #ff6347;
+        }
+
+        /* برای تنظیم فاصله میان متن و منو */
+        .content {
+            margin-top: 80px; /* ارتفاع منو (60px) + پدینگ (20px) */
+            text-align: center;
+        }
+
+        /* برای آیتم‌های کافه */
+        .items-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* تمام باکس‌ها را به یک سمت منتقل کنید */
+            margin: 2.5rem 0; /* فاصله بین منو و آیتم‌ها */
+
+        }
+
+        .cafe-items {
+            width: 17rem;
+            direction: rtl;
+        }
+
+        .cafe-items__box {
+            background-color: #333;
+            padding: 0 0 2rem 0;
+            margin: 10px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .cafe-items__box img {
+            width: 100%;
+            border-radius: 8px; /* ردیوس برای تصویر */
+        }
+
+        .cafe-items__box-titles {
+            margin-top: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .cafe-notes {
+            background-color: #ff6347;
+            color: #fff;
+            padding: 10px 10px;
+            border-radius: 5px;
+            display: inline-block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            cursor: pointer;
+        }
+
+        .cafe-notes__title {
+            margin: 0;
+            transition: all 0.25s ease-in-out;
+        }
+
+        .cafe-notes:hover .cafe-notes__title {
+            transform: scale(1.09);
+        }
+
+        /* card style */
+        .card-container {
+            padding: 1.25rem;
+            background: white;
+            position: absolute;
+            bottom: 2rem;
+            left: 2rem;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .card-box__icon {
+            color: #ff6347;
+            font-size: 1.5rem;
+        }
+
+        .selected-title {
+            text-align: center;
+        }
+
+        /* دسر */
+        .desert-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000000;
+        }
+        .desert{
+            padding: 0.5rem;
+            background: #ffff;
+            width: 5rem;
+            text-align: center;
+            border-radius: 1.5rem 0 1.5rem 0;
+        }
+
+        .section-content {
+            display: none;
+        }
